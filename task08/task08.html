@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task08</title>
+  <style>
+    .box{
+      display: -webkit-flex; /* Safari */
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 1;
+    }
+    .large-box{
+      height:160px;
+      width:600px;
+      border:1px solid black;
+      margin:0 auto;
+    }
+    .medium-box{
+      height:120px;
+      width:280px;
+      margin:20px 10px;
+      border:1px solid black;
+    }
+    .small-box{
+      width:30px;
+      height:80px;
+      margin-top:20px;
+      margin-bottom:20px;
+      border:1px solid black;
+    }
+    .small2-box{
+      height:80px;
+      width:120px;
+      margin:20px 10px;
+      border:1px solid black;
+    }
+    .small2-box div{
+      width:40px;
+      height:40px;
+      margin-top:20px;
+      margin-bottom:20px;
+      border:1px solid black;
+    }
+
+  </style>
+  <script src="task08.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="box large-box" id="root">
+  <div class="box medium-box">
+    <div class="box small-box"></div>
+    <div class="box small-box "></div>
+    <div class="box small-box "></div>
+    <div class="box small-box "></div>
+    <div class="box small-box "></div>
+    <div class="box small-box "></div>
+    <div class="box small-box "></div>
+
+  </div>
+  <div class="box medium-box">
+    <div class="box small2-box">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="box small2-box">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+<button id="preOrderBtn">click me</button>
+<button id="button">alert</button>
+</body>
+</html>

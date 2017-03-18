@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  body{
+    margin:0px;
+    padding:0px;
+  }
+  #board{
+    width:400px;
+    /*height:200px;*/
+    border:1px solid black;
+  }
+  table{
+    border-collapse: collapse;
+  }
+  table td{
+    border:1px solid gray;
+    /*box-sizing: border-box 即将边框，内边距都包含在元素规定的宽高内；content-box边框，内边距都不包含在元素规定的宽高内*/
+    box-sizing: border-box;
+    width:40px;
+    height:40px;
+  }
+  #boxHead{
+    width:40px;
+    height:10px;
+    background:blue;
+  }
+  #boxBody{
+    width:40px;
+    height:30px;
+    background:red;
+  }
+</style>
+<script src="task05.js"></script>
+<body>
+<div id="container" style="position: relative;">
+  <div id="board">
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <div id="moveBox" style="position:absolute;top:320px;left:40px;"><!---webkit-transform-origin:center center;设置元素中心为旋转点-->
+    <div  class="boxHead" id="boxHead" style="width:40px;height:10px;"></div>
+    <div class="boxBody" id="boxBody" style="width:40px;height:30px;"></div>
+  </div>
+  <div id="order">
+    <input type="text" id="orderContext">
+    <button id="btn">执行</button>
+  </div>
+</div>
+</body>
+</html>

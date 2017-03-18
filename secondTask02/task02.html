@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task02</title>
+  <script src="task02.js"></script>
+  <style>
+    label{
+      display:inline-block;
+      text-align: right;
+      width:100px;
+      height:30px;
+      line-height:30px;
+    }
+    input{
+      display:inline-block;
+      height:25px;
+      margin-bottom: 5px;
+    }
+    button{
+      margin-left:140px;
+      width:50px;
+      height:30px;
+      border-radius: 10%;
+    }
+  </style>
+</head>
+<body>
+  <form action="" onSubmit="return false" >
+    <label for="nickName">名称</label>
+    <input type="text" id="nickName">
+    <span id="tip1"></span>
+    <br>
+    <label for="password">密码</label>
+    <input type="text" id="password">
+    <span id="tip2"></span>
+    <br>
+    <label for="checkpass">密码确认</label>
+    <input type="text" id="checkpass">
+    <span id="tip3"></span>
+    <br>
+    <label for="email">邮箱</label>
+    <input type="text" id="email">
+    <span id="tip4"></span>
+    <br>
+    <label for="phone">手机</label>
+    <input type="text" id="phone">
+    <span id="tip5"></span>
+    <br>
+    <button id="btn">提交</button>
+  </form>
+</body>
+</html>

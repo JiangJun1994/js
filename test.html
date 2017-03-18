@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      *{
+        margin:0px;
+        padding:0px;
+      }
+
+      body{
+        position:relative;
+      }
+
+      .center{
+        margin:150px 500px;
+        width:460px;
+        height:500px;
+      }
+
+      .top_num span{
+        display:inline-block;
+        width:41px;
+        text-align:center;
+        position:relative;
+        left:40px;
+      }
+
+      .aside_num p{
+        text-align:center;
+        height:40px;
+        width:40px;
+      }
+      .checkboard{
+        border:1px solid #1a1a1a;
+        height:401px;
+        width:410px;
+        position:relative;
+        left:40px;
+        top:-400px;
+      }
+
+      table{
+        border-collapse:collapse;
+      }
+
+      td{
+        border:1px solid #e2e2e2;
+        width:40px;
+        height:40px;
+      }
+
+      .box{
+        width:41px;
+        height:40px;
+
+      }
+
+      .box_head{
+        width:41px;
+        height:10px;
+        background-color:#0100fe;
+      }
+
+      .box_body{
+        top:10px;
+        left:0px;
+        position:absolute;
+        width:41px;
+        height:30px;
+        background-color:#fe0000;
+      }
+
+      .box_order{
+        position:absolute;
+        left:550px;
+        top:450px;
+      }
+
+      #input_order{
+        height:28px;
+        width:200px;
+        border-radius:5px;
+        border:1px solid #ccc;
+      }
+
+      #btn{
+        width:60px;
+        height:30px;
+        border-radius:5px;
+        border:1px solid #ccc;
+      }
+
+      .order_list{
+        position:absolute;
+        top:10px;
+        left:100px;
+      }
+
+      .order_list li{
+        list-style:none;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="center">
+    <div class="top_num">
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+    </div>
+    <div class="aside_num">
+      <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p>
+    </div>
+    <div class="checkboard">
+      <table>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+          <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="box" id="box" style="position:absolute;left:745px;top:182px;">
+    <div class="box_head" id="box_head" style="position:absolute;top:0px;left:0px;"></div>
+    <div class="box_body" id="box_body" style="position:absolute;top:10px;left:0px;"></div>
+  </div>
+  <div class="box_order">
+    <input type="text" id="input_order">
+    <input type="button" id="btn" value="执行">
+  </div>
+  <div class="order_list">
+    <ul id="order_list">
+      <li>GO</li>
+      <li>TUN LEF</li>
+      <li>TUN RIG</li>
+      <li>TUN BAC</li>
+      <li>TRA LEF</li>
+      <li>TRA TOP</li>
+      <li>TRA RIG</li>
+      <li>TRA BOT</li>
+      <li>MOV LEF</li>
+      <li>MOV TOP</li>
+      <li>MOV RIG</li>
+      <li>MOV BOT</li>
+    </ul>
+  </div>
+  <script >
+    function execution(){
+      var order = document.getElementById("input_order").value;
+      var box = document.getElementById("box");
+      var boxHead = document.getElementById("box_head");
+      var boxBody = document.getElementById("box_body");
+      var headTop = boxHead.getBoundingClientRect().top;
+      var bodyTop = boxBody.getBoundingClientRect().top;
+      var headLeft = boxHead.getBoundingClientRect().left;
+      var bodyLeft = boxBody.getBoundingClientRect().left;
+      if(order == "MOV BOT"){
+        var top = parseInt(box.style.top) + 40;
+        if(top < 400){
+          box.style.transform = "rotate(90deg)";
+          var player = box.animate([
+            {transform:'rotate(90deg)'},
+            {transform:'rotate(180deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(180deg)';
+          });
+          var id = setInterval(moveBack,20);
+          function moveBack(){
+            if(parseInt(box.style.top) == top){
+              clearInterval(id);
+            }else{
+              box.style.top = parseInt(box.style.top) + 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "MOV RIG"){
+        var left = parseInt(box.style.left) + 41;
+        if(left<950){
+          var player = box.animate([
+            {transform:'rotate(0deg)'},
+            {transform:'rotate(90deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(90deg)';
+          });
+          var id = setInterval(moveRight,20);
+          function moveRight(){
+            if(parseInt(box.style.left) == left){
+              clearInterval(id);
+            }else{
+              box.style.left = parseInt(box.style.left) + 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "MOV TOP"){
+        var top = parseInt(box.style.top) -40;
+        if(top > 0){
+          box.style.transform = "rotate(90deg)";
+          var player = box.animate([
+            {transform:'rotate(90deg)'},
+            {transform:'rotate(0deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = "rotate(0deg)";
+          });
+          var id = setInterval(moveForward,20);
+          function moveForward(){
+            if(parseInt(box.style.top) == top ){
+              clearInterval(id);
+            }else{
+              box.style.top = parseInt(box.style.top) - 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "MOV LEF"){
+        var left = parseInt(box.style.left) -41;
+        if(left > 500){
+          var player = box.animate([
+            {transform:'rotate(0deg)'},
+            {transform:'rotate(-90deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(-90deg)';
+          });
+          var id = setInterval(moveLeft,20);
+          function moveLeft(){
+            if(parseInt(box.style.left) == left ){
+              clearInterval(id);
+            }else{
+              box.style.left = parseInt(box.style.left) - 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "TRA BOT"){
+        var top = parseInt(box.style.top) + 40;
+        if(top < 400){
+          var id = setInterval(moveBack,20);
+          function moveBack(){
+            if(parseInt(box.style.top) == top){
+              clearInterval(id);
+            }else{
+              box.style.top = parseInt(box.style.top) + 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "TRA RIG"){
+        var left = parseInt(box.style.left) + 41;
+        if(left<950){
+          var id = setInterval(moveRight,20);
+          function moveRight(){
+            if(parseInt(box.style.left) == left){
+              clearInterval(id);
+            }else{
+              box.style.left = parseInt(box.style.left) + 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "TRA TOP"){
+        var top = parseInt(box.style.top) -40;
+        if(top > 0){
+          var id = setInterval(moveForward,20);
+          function moveForward(){
+            if(parseInt(box.style.top) == top ){
+              clearInterval(id);
+            }else{
+              box.style.top = parseInt(box.style.top) - 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "TRA LEF"){
+        var left = parseInt(box.style.left) -40;
+        if(left > 500){
+          var id = setInterval(moveLeft,20);
+          function moveLeft(){
+            if(parseInt(box.style.left) == left ){
+              clearInterval(id);
+            }else{
+              box.style.left = parseInt(box.style.left) - 1 + "px";
+            }
+          }
+        }
+      }
+      if(order == "GO"){
+        if(headTop < bodyTop){
+          var top = parseInt(box.style.top) -40;
+          if(top > 0){
+            var id = setInterval(moveForward,20);
+            function moveForward(){
+              if(parseInt(box.style.top) == top ){
+                clearInterval(id);
+              }else{
+                box.style.top = parseInt(box.style.top) - 1 + "px";
+              }
+            }
+          }
+        }else if(headTop > bodyTop){
+          var top = parseInt(box.style.top) + 40;
+          if(top < 400){
+            var id = setInterval(moveBack,20);
+            function moveBack(){
+              if(parseInt(box.style.top) == top){
+                clearInterval(id);
+              }else{
+                box.style.top = parseInt(box.style.top) + 1 + "px";
+              }
+            }
+          }
+        }else if(headLeft > bodyLeft){
+          var left = parseInt(box.style.left) + 41;
+          if(left<950){
+            var id = setInterval(moveRight,20);
+            function moveRight(){
+              if(parseInt(box.style.left) == left){
+                clearInterval(id);
+              }else{
+                box.style.left = parseInt(box.style.left) + 1 + "px";
+              }
+            }
+          }
+        }else{
+          var left = parseInt(box.style.left) - 41;
+          if(left > 500){
+            var id = setInterval(moveLeft,20);
+            function moveLeft(){
+              if(parseInt(box.style.left) == left){
+                clearInterval(id);
+              }else{
+                box.style.left = parseInt(box.style.left) - 1 + "px";
+              }
+            }
+          }
+        }
+      }
+      if(order == "TUN LEF"){
+        if(headTop < bodyTop){
+          var player = box.animate([
+            {transform:'rotate(0deg)'},
+            {transform:'rotate(-90deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(-90deg)';
+          });
+        }else if(headTop > bodyTop){
+          box.style.transform = 'rotate(-180deg)';
+          var player = box.animate([
+            {transform:'rotate(-180deg)'},
+            {transform:'rotate(-270deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(-270deg)';
+          });
+        }else if(headLeft < bodyLeft){
+          box.style.transform = "rotate(-90deg)";
+          var player = box.animate([
+            {transform:'rotate(-90deg)'},
+            {transform:'rotate(-180deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(-180deg)';
+          });
+        }else{
+          box.style.transform = "rotate(90deg)";
+          var player = box.animate([
+            {transform:'rotate(90deg)'},
+            {transform:'rotate(0deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = "rotate(0deg)";
+          });
+        }
+      }
+      if(order == "TUN RIG"){
+        if(headTop < bodyTop){
+          var player = box.animate([
+            {transform:'rotate(0deg)'},
+            {transform:'rotate(90deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(90deg)';
+          });
+        }else if(headTop > bodyTop){
+          box.style.transform = 'rotate(180deg)';
+          var player = box.animate([
+            {transform:'rotate(180deg)'},
+            {transform:'rotate(270deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(270deg)';
+          });
+        }else if(headLeft < bodyLeft){
+          box.style.transform = 'rotate(270deg)';
+          var player = box.animate([
+            {transform:'rotate(270deg)'},
+            {transform:'rotate(360deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(360deg)';
+          });
+        }else{
+          box.style.transform = "rotate(90deg)";
+          var player = box.animate([
+            {transform:'rotate(90deg)'},
+            {transform:'rotate(180deg)'}
+          ],500);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(180deg)';
+          });
+        }
+      }
+      if(order == "TUN BAC"){
+        if(headTop < bodyTop){
+          box.style.transform = "rotate(0deg)";
+          var player = box.animate([
+            {transform:'rotate(0deg)'},
+            {transform:'rotate(180deg)'}
+          ],1000);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(180deg)';
+          });
+        }else if(headTop > bodyTop){
+          box.style.transform = 'rotate(180deg)';
+          var player = box.animate([
+            {transform:'rotate(180deg)'},
+            {transform:'rotate(0deg)'}
+          ],1000);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(0deg)';
+          });
+        }else if(headLeft < bodyLeft){
+          box.style.transform = 'rotate(-90deg)';
+          var player = box.animate([
+            {transform:'rotate(-90deg)'},
+            {transform:'rotate(-270deg)'}
+          ],1000);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(-270deg)';
+          });
+        }else{
+          box.style.transform = 'rotate(90deg)';
+          var player = box.animate([
+            {transform:'rotate(90deg)'},
+            {transform:'rotate(270deg)'}
+          ],1000);
+          player.addEventListener('finish',function(){
+            box.style.transform = 'rotate(270deg)';
+          });
+        }
+      }
+    }
+
+    function getOrder(){
+      document.getElementById("input_order").value = this.textContent;
+    }
+
+    function init(){
+      document.getElementById("btn").onclick = execution;
+      var orderList = document.getElementById("order_list").children;
+      var len = orderList.length;
+      for(var i = 0;i<len;i++){
+        orderList[i].addEventListener("click",getOrder);
+      }
+
+    }
+
+    init();
+  </script>
+  </body>
+  </html>
