@@ -144,6 +144,7 @@ window.onload=function(){
         }
       }
     }
+    //transform rotate??根据什么进行旋转？
     if(order=="left"){
       if(headTop < bodyTop){
         moveBox.style.transform = "rotate(270deg)";
