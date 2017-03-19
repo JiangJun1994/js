@@ -77,6 +77,7 @@ window.onload=function(){
   btn4.onclick=show4;
 
   //search   we can use children to get content(contains one or more html labels) in a div,
+  //we can use replace to take place of some content   replace(a,b)  b will replace a.
 
   var btn_search=document.getElementById("btn_search");
   function search(){
