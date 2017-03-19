@@ -16,7 +16,7 @@ window.onload=function(){
   nickName.onfocus=function(){
     tip1.style.color="gray";
     tip1.innerHTML="必填，长度为4-16个字符"
-
+    nickName.style.border="1px solid black";
   };
   nickName.onblur=function(){
     var len=nickName.value.length;
@@ -28,7 +28,11 @@ window.onload=function(){
         number+=2;
       }
     };
-    if(number<4||number>16){
+    if(number==0){
+      tip1.innerHTML="姓名不能为空！"
+      tip1.style.color="red";
+      nickName.style.border="1px solid red";
+    }else if(number<4||number>16){
       tip1.innerHTML="格式错误！"
       tip1.style.color="red";
       nickName.style.border="1px solid red";
@@ -42,14 +46,21 @@ window.onload=function(){
   password.onfocus=function(){
     tip2.innerHTML="长度大于6";
     tip2.style.color="gray";
+    password.style.border="1px solid black";
+
   };
   password.onblur=function(){
     var len=password.value.length;
-    if(len<6){
+    console.log(len)
+    if(len==0){
+      tip2.innerHTML="密码不能为空";
+      tip2.style.color="red";
+      password.style.border="1px solid red";
+    } else if(0<len<6){
       tip2.innerHTML="格式错误";
       tip2.style.color="red";
       password.style.border="1px solid red";
-    }else{
+    } else{
       tip2.innerHTML="密码可用";
       tip2.style.color="green";
       password.style.border="1px solid green";
@@ -60,13 +71,19 @@ window.onload=function(){
   checkpass.onfocus=function(){
     tip3.innerHTML="再次输入相同密码";
     tip3.style.color="gray";
+    checkpass.style.border="1px solid black";
+
   };
   checkpass.onblur=function(){
-    if(checkpass.value==password.value&&checkpass.value.length>6){
+    if(checkpass.value.length==0){
+      tip3.innerHTML="密码不能为空";
+      tip3.style.color="red";
+      checkpass.style.border="1px solid red";
+    }else if(checkpass.value==password.value&&checkpass.value.length>6){
       tip3.innerHTML="密码输入一致";
       tip3.style.color="green";
       checkpass.style.border="1px solid green";
-    }else{
+    } else{
       tip3.innerHTML="密码不一致";
       tip3.style.color="red";
       checkpass.style.border="1px solid red";
@@ -77,10 +94,15 @@ window.onload=function(){
   email.onfocus=function(){
     tip4.innerHTML="请输入邮箱";
     tip4.style.color="gray";
+    email.style.border="1px solid black";
   };
   email.onblur=function(){
     var len=email.value;
-    if(!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(email.value))){
+    if(len.length==0){
+      tip4.innerHTML="邮箱不能为空"
+      tip4.style.color="red";
+      email.style.border="1px solid red";
+    }else if(!(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(email.value))){
       tip4.innerHTML="邮箱格式错误"
       tip4.style.color="red";
       email.style.border="1px solid red";
@@ -94,10 +116,16 @@ window.onload=function(){
   phone.onfocus=function(){
     tip5.innerHTML="请输入手机号";
     tip5.style.color="gray";
+    phone.style.border="1px solid black";
   };
   phone.onblur=function(){
     var len=phone.value;
-    if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone.value))){
+    if(len.length==0){
+      tip5.innerHTML="手机号不能为空"
+      tip5.style.color="red";
+      phone.style.border="1px solid red";
+    }
+    else if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone.value))){
       tip5.innerHTML="请输入正确的手机号"
       tip5.style.color="red";
       phone.style.border="1px solid red";
