@@ -14,9 +14,9 @@ window.onload=function(){
       }
       lastNode=ele;
       if(ele.firstElementChild){
-        setTimeout(preOrder.bind(this,ele.firstElementChild),1900);
-        var seconds;
-        var offspringNum=getNumOffspring(ele.firstElementChild)
+        setTimeout(preOrder.bind(this,ele.firstElementChild),1900);// without bind,the action scope of preorder is wrong
+        var seconds;                                               //setTimeout(function.bind(this,parameter),time)
+        var offspringNum=getNumOffspring(ele.firstElementChild)    //settimeout("function(parameter)",time)
         seconds=(offspringNum+1)*2000+2000;
         setTimeout(preOrder.bind(this,ele.lastElementChild),seconds);
       }
