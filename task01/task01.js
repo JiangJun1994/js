@@ -1,5 +1,6 @@
 /**
  * Created by jiangjun on 2017/3/12.
+ * done
  */
 window.onload=function(){
   var inputValue=document.getElementById("aqi-input");
