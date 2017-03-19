@@ -18,7 +18,7 @@ window.onload=function(){
     inputContent.value="";
     var str="";
     for (var i=0;i<disContent.length;i++){
-      str+="<span>"+disContent[i]+"</span>"
+      str+="<span style='display: inline-block;min-width:20px;'>"+disContent[i]+"</span>"
     }
     display.innerHTML=str;
   }
@@ -32,7 +32,7 @@ window.onload=function(){
     inputContent.value="";
     var str="";
     for (var i=0;i<disContent.length;i++){
-      str+="<span>"+disContent[i]+"</span>"
+      str+="<span style='display: inline-block;min-width:20px;'>"+disContent[i]+"</span>"
     }
     display.innerHTML=str;
   }
@@ -46,7 +46,7 @@ window.onload=function(){
     alert(c)
     var str="";
     for (var i=0;i<disContent.length;i++){
-      str+="<span>"+disContent[i]+"</span>"
+      str+="<span style='display: inline-block;min-width:20px;'>"+disContent[i]+"</span>"
     }
     display.innerHTML=str;
 
@@ -62,7 +62,7 @@ window.onload=function(){
     alert(d)
     var str="";
     for (var i=0;i<disContent.length;i++){
-      str+="<span>"+disContent[i]+"</span>"
+      str+="<span style='display: inline-block;min-width:20px;'>"+disContent[i]+"</span>"
     }
     display.innerHTML=str;
   }
