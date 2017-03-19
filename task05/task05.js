@@ -62,7 +62,7 @@ window.onload=function(){
     height.shift(height1);
     var str="";
     for (var i=0;i<disContent.length;i++){
-      str+="<img style='width:20px;background:red;margin-right:3px;height:"+height[i]+"'></img>"
+      str+="<img style='width:20px;background:red;margin-right:3px;height:"+height[i]+"'>"
     }
     display.innerHTML=str;
   };
